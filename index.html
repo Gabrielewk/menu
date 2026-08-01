@@ -77,8 +77,10 @@
   }
 
   .subheader{
-    display:flex; align-items:center; justify-content:center;
-    gap: 28px;
+    display:flex; align-items:center;
+    justify-content: center;
+    justify-content: safe center;
+    gap: clamp(12px, 4vw, 28px);
     padding: 9px 5vw;
     border-top: 1px solid rgba(62,43,35,0.1);
     background: rgba(62,43,35,0.03);
@@ -87,9 +89,9 @@
   .subheader a{
     text-decoration:none;
     color: var(--ink);
-    font-size:0.82rem;
+    font-size: clamp(0.68rem, 2.6vw, 0.82rem);
     font-weight:600;
-    letter-spacing:0.04em;
+    letter-spacing:0.03em;
     text-transform:uppercase;
     white-space:nowrap;
     position:relative;
@@ -229,18 +231,18 @@
   .menu .section-head .eyebrow{ color: var(--wheat); }
 
   .category-tabs{
-    display:flex; justify-content:center; gap:10px; flex-wrap:wrap;
+    display:flex; justify-content:center; justify-content: safe center; gap:10px; flex-wrap:wrap;
     margin-bottom: 50px;
   }
   .category-tabs button{
     background:transparent;
     border:1px solid rgba(242,232,213,0.35);
     color: rgba(242,232,213,0.75);
-    padding: 9px 20px;
+    padding: 9px clamp(10px, 3vw, 20px);
     border-radius: 3px;
     font-family: var(--mono);
-    font-size:0.82rem;
-    letter-spacing:0.04em;
+    font-size: clamp(0.66rem, 2.4vw, 0.82rem);
+    letter-spacing:0.03em;
     cursor:pointer;
     transition: all .2s ease;
     white-space:nowrap;
@@ -322,21 +324,22 @@
   [data-i18n]{ transition: opacity .15s ease; }
 
   @media (max-width: 780px){
-    .subheader{ gap:20px; justify-content:center; }
-    .subheader a{ font-size:0.76rem; }
+    .subheader{ gap: clamp(10px, 3.5vw, 20px); }
+    .subheader a{ font-size: clamp(0.62rem, 3vw, 0.76rem); }
     .category-tabs{
       flex-wrap:nowrap;
-      justify-content:center;
+      justify-content: center;
+      justify-content: safe center;
       overflow-x:auto;
       -webkit-overflow-scrolling:touch;
-      gap:8px;
+      gap: clamp(5px, 2vw, 8px);
       padding-bottom:4px;
       margin-left:-6vw; margin-right:-6vw;
       padding-left:6vw; padding-right:6vw;
     }
     .category-tabs button{
-      padding: 8px 14px;
-      font-size:0.75rem;
+      padding: 7px clamp(8px, 2.5vw, 14px);
+      font-size: clamp(0.6rem, 2.8vw, 0.75rem);
     }
     .about-grid{ grid-template-columns:1fr; }
     .about-visual{ aspect-ratio:16/9; }

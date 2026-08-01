@@ -1,548 +1,646 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gabriele Cossu — Photography</title>
+<title>La Runcina — Cucina Sarda</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-
-  /* ── Light theme (default) ── */
   :root{
-    --bg: #ffffff;
-    --ink: #111111;
-    --ink-soft: #6e6e6e;
-    --line: #e7e5e0;
-    --accent: #4a5a5e;
-    --ph-bg: #f1f0ec;
-    --flag-bg: rgba(17,17,17,0.45);
-    --flag-ink: rgba(255,255,255,0.85);
-    --lb-bg: rgba(17,17,17,0.97);
-
+    --clay:#c9622f;
+    --sea:#4a3220;
+    --wheat:#d9a441;
+    --cork:#241814;
+    --parchment:#f2e8d5;
+    --myrtle:#5c6b3d;
+    --stone:#8a8175;
+    --ink:#2a201b;
+    --display: 'Fraunces', serif;
+    --body: 'Manrope', sans-serif;
     --mono: 'IBM Plex Mono', monospace;
-    --body: 'IBM Plex Mono', monospace;
-
-    --gutter: clamp(32px, 7vw, 80px);
-    --col-gap: clamp(10px, 2vw, 18px);
   }
-
-  /* ── Dark theme ── */
-  html[data-theme="dark"]{
-    --bg: #131311;
-    --ink: #e9e7e1;
-    --ink-soft: #8b897f;
-    --line: #2b2b27;
-    --accent: #9fb3b8;
-    --ph-bg: #1d1d1a;
-    --flag-bg: rgba(233,231,225,0.14);
-    --flag-ink: rgba(233,231,225,0.85);
-    --lb-bg: rgba(8,8,7,0.97);
-  }
-
-  *{ margin:0; padding:0; box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
-
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
   body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:var(--body);
-    -webkit-font-smoothing:antialiased;
-    transition:background .45s ease, color .45s ease;
+    font-family: var(--body);
+    background: var(--parchment);
+    color: var(--ink);
+    line-height:1.5;
   }
 
-  a{ color:inherit; text-decoration:none; }
+  /* ---------- pintadera stamp motif (signature element) ---------- */
+  .stamp{
+    display:inline-block;
+    width:34px; height:34px;
+  }
+  .stamp svg{width:100%;height:100%;}
+  .stamp-row{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    opacity:0.55;
+    margin: 0 auto;
+  }
 
-  /* ── Header ── */
+  /* ---------- header ---------- */
   header{
+    position:sticky; top:0; z-index:50;
     display:flex; align-items:center; justify-content:space-between;
-    flex-wrap:wrap; gap:12px;
-    padding:34px var(--gutter) 26px;
-    animation:riseIn .7s cubic-bezier(.22,1,.36,1) both;
+    padding: 18px 5vw;
+    background: rgba(242,232,213,0.9);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(62,43,35,0.15);
   }
-
-  @keyframes riseIn{
-    from{ opacity:0; transform:translateY(10px); }
-    to{ opacity:1; transform:translateY(0); }
+  .logo{
+    display:flex; align-items:center; gap:12px;
   }
-
-  .wordmark{
-    font-family:var(--mono);
-    font-weight:500;
-    font-size:14px;
+  .logo-mark{ display:flex; align-items:center; flex-shrink:0; }
+  .logo-text{ display:flex; flex-direction:column; line-height:1.15; }
+  .logo-name{
+    font-family: var(--display);
+    font-style: italic;
+    font-weight:600;
+    font-size: 1.35rem;
+    color: var(--cork);
+    letter-spacing:0.01em;
+  }
+  .logo-sub{
+    font-family: var(--mono);
+    font-size:0.62rem;
     letter-spacing:0.12em;
     text-transform:uppercase;
+    color: var(--stone);
   }
-
-  nav ul{ list-style:none; display:flex; gap:34px; align-items:center; }
+  nav{
+    display:flex; align-items:center; gap:32px;
+  }
   nav a{
-    font-family:var(--mono);
-    font-size:13px;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
+    text-decoration:none;
+    color: var(--ink);
+    font-size:0.95rem;
+    font-weight:500;
     position:relative;
-    padding-bottom:4px;
+  }
+  nav a::after{
+    content:''; position:absolute; left:0; bottom:-4px;
+    width:0; height:2px; background:var(--clay);
+    transition: width .25s ease;
+  }
+  nav a:hover::after{ width:100%; }
+
+  .lang-switch{
+    display:flex; gap:6px;
+    font-family: var(--mono);
+    font-size:0.8rem;
+  }
+  .lang-switch button{
+    border:1px solid var(--cork);
+    background:transparent;
+    color:var(--cork);
+    padding:4px 9px;
+    border-radius:3px;
+    cursor:pointer;
+    letter-spacing:0.05em;
+  }
+  .lang-switch button.active{
+    background:var(--clay);
+    border-color:var(--clay);
+    color:var(--parchment);
   }
 
-  /* theme toggle — styled like the rest of the nav */
-  .theme-toggle{
-    background:none; border:none; cursor:pointer;
-    font-family:var(--mono); font-size:13px;
-    letter-spacing:0.1em; text-transform:uppercase;
-    color:var(--ink-soft);
-    padding-bottom:4px;
-    transition:color .25s ease;
-  }
-  .theme-toggle:hover{ color:var(--ink); }
-  .theme-toggle:focus-visible{ outline:1px solid var(--ink); outline-offset:3px; }
+  .menu-toggle{ display:none; }
 
-  /* ── Glitch hover (your signature) ── */
-  .moire{ position:relative; display:inline-block; }
-  .moire::before, .moire::after{
-    content:attr(data-text);
-    position:absolute; left:0; top:0;
-    white-space:nowrap;
-    pointer-events:none;
-    opacity:0;
-    transition:opacity .1s ease;
-  }
-  .moire::before{
-    clip-path:polygon(0 0, 100% 0, 100% 33%, 0 33%);
-    color:var(--ink);
-  }
-  .moire::after{
-    clip-path:polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-    color:var(--ink);
-  }
-  .moire:hover{ animation:glitch 1s linear infinite; }
-  .moire:hover::before{ opacity:0.9; animation:glitchTop 1s linear infinite; }
-  .moire:hover::after{ opacity:0.9; animation:glitchBottom 1.5s linear infinite; }
-
-  @keyframes glitch {
-    0%,30%,64%{ transform:translate(1px) skew(0deg); }
-    4%,60%    { transform:translate(0) skew(0deg); }
-    62%       { transform:translate(1px) skew(1deg); }
-  }
-  @keyframes glitchTop {
-    0%,30%,64%{ transform:translate(1px,-1px); }
-    4%,60%    { transform:translate(-1px,1px); }
-    62%       { transform:translate(13px,-1px) skew(-13deg); }
-  }
-  @keyframes glitchBottom {
-    0%,30%,64%{ transform:translate(-1px,0); }
-    4%,60%    { transform:translate(-1px,0); }
-    62%       { transform:translate(-22px,5px) skew(21deg); }
-  }
-
-  /* ── Intro ── */
-  .intro{
-    padding:24px var(--gutter) 6px;
-    display:flex; justify-content:center;
-    animation:riseIn .7s .15s cubic-bezier(.22,1,.36,1) both;
-  }
-  .intro-text{
-    font-family:var(--mono);
-    font-size:clamp(11px,0.85vw,13px);
-    line-height:1.9;
-    color:var(--ink-soft);
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    min-height: 78vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
     text-align:center;
-    max-width:960px;
+    padding: 40px 6vw 60px;
+    background: linear-gradient(160deg, var(--sea) 0%, #6b4a2a 38%, var(--wheat) 78%, var(--clay) 100%);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'';
+    position:absolute; inset:0;
+    background: radial-gradient(circle at 20% 15%, rgba(255,255,255,0.12), transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(0,0,0,0.18), transparent 45%);
+  }
+  .hero-content{ position:relative; z-index:2; max-width:700px; }
+  .eyebrow{
+    font-family: var(--mono);
+    text-transform:uppercase;
+    letter-spacing:0.25em;
+    font-size:0.75rem;
+    color: rgba(242,232,213,0.85);
+    margin-bottom: 18px;
+  }
+  .hero h1{
+    font-family: var(--display);
+    font-weight:700;
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
+    color: var(--parchment);
+    line-height:0.95;
+    font-optical-sizing:auto;
+  }
+  .hero p.tagline{
+    font-size:1.15rem;
+    color: rgba(242,232,213,0.92);
+    margin-top:22px;
+    font-weight:400;
+    max-width:480px;
+    margin-left:auto; margin-right:auto;
+  }
+  .hero-cta{
+    margin-top:36px;
+    display:inline-block;
+    background: var(--parchment);
+    color: var(--cork);
+    text-decoration:none;
+    padding: 14px 34px;
+    border-radius:2px;
+    font-weight:600;
     letter-spacing:0.03em;
+    transition: transform .2s ease, background .2s ease;
+  }
+  .hero-cta:hover{ transform: translateY(-2px); background:#fff; }
+
+  /* ---------- section shell ---------- */
+  section{ padding: 100px 6vw; }
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin: 0 auto 56px;
+  }
+  .section-head .eyebrow{ color: var(--clay); }
+  .section-head h2{
+    font-family: var(--display);
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    color: var(--cork);
+    font-weight:600;
   }
 
-  /* ── Grid ── */
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(12,1fr);
-    column-gap:var(--col-gap);
-    row-gap:48px;
-    padding:48px var(--gutter) 90px;
+  /* ---------- about ---------- */
+  .about{ background: var(--parchment); }
+  .about-grid{
+    max-width:1000px; margin:0 auto;
+    display:grid; grid-template-columns: 1fr 1.3fr; gap:60px; align-items:center;
   }
-
-  .item{ display:flex; flex-direction:column; cursor:pointer; }
-
-  /* scroll reveal */
-  .item{
-    opacity:0;
-    transform:translateY(26px);
-    transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
-    transition-delay:var(--d, 0s);
-  }
-  .item.in{ opacity:1; transform:translateY(0); }
-
-  .photo{
+  .about-visual{
+    aspect-ratio: 4/5;
+    border-radius:4px;
+    background:
+      repeating-linear-gradient(90deg, rgba(0,0,0,0.08) 0 3px, transparent 3px 46px),
+      linear-gradient(155deg, var(--sea), var(--clay) 55%, var(--myrtle));
     position:relative;
     overflow:hidden;
-    aspect-ratio:4/5;
-    background:var(--ph-bg);
-  }
-  .photo .ph{
-    position:absolute; inset:0;
-    transition:transform .7s cubic-bezier(.22,1,.36,1);
-  }
-  .item:hover .photo .ph{ transform:scale(1.035); }
-
-  /* view hint on hover */
-  .photo::after{
-    content:'VIEW →';
-    position:absolute; left:12px; bottom:10px;
-    font-family:var(--mono); font-size:9px; letter-spacing:.12em;
-    color:var(--flag-ink);
-    background:var(--flag-bg);
-    padding:3px 7px;
-    opacity:0; transform:translateY(6px);
-    transition:opacity .3s ease, transform .3s ease;
-  }
-  .item:hover .photo::after{ opacity:1; transform:translateY(0); }
-
-  .placeholder-flag{
-    position:absolute; top:10px; right:10px;
-    font-family:var(--mono); font-size:9px; letter-spacing:.06em;
-    color:var(--flag-ink);
-    background:var(--flag-bg);
-    padding:3px 7px;
-  }
-
-  .photo-count{
-    position:absolute; top:10px; left:10px;
-    font-family:var(--mono); font-size:9px; letter-spacing:.06em;
-    color:var(--flag-ink);
-    background:var(--flag-bg);
-    padding:3px 7px;
-  }
-
-  .cap{ margin-top:14px; }
-  .cap .title{
-    font-family:var(--body); font-weight:400; font-size:15px;
-    color:var(--ink); margin-bottom:3px;
-  }
-  .cap .meta{
-    font-family:var(--mono); font-size:11px; letter-spacing:.05em;
-    text-transform:uppercase; color:var(--ink-soft);
-  }
-
-  .item.p-half{ grid-column:span 6; }
-  .item.p-center{ grid-column:3 / span 8; }
-
-  /* ── Section tag (shared small label) ── */
-  .tag{
-    display:block;
-    font-family:var(--mono); font-size:11px; letter-spacing:.18em;
-    text-transform:uppercase; color:var(--ink-soft);
-    margin-bottom:14px;
-  }
-
-  /* ── Next up (in-progress teaser) ── */
-  .next{
-    padding:44px var(--gutter) 80px;
-    border-top:1px solid var(--line);
-    animation:riseIn .7s cubic-bezier(.22,1,.36,1) both;
-  }
-  .next-row{
-    display:flex; align-items:baseline; justify-content:space-between;
-    flex-wrap:wrap; gap:10px 24px;
-  }
-  .next-text{
-    font-family:var(--body); font-size:15px; color:var(--ink);
-  }
-  .next-text .moire{ color:var(--accent); }
-  .next-when{
-    font-family:var(--mono); font-size:11px; letter-spacing:.1em;
-    text-transform:uppercase; color:var(--ink-soft); white-space:nowrap;
-  }
-  .next-bar{
-    margin-top:20px; height:1px; background:var(--line); position:relative; overflow:hidden;
-  }
-  .next-bar::after{
-    content:''; position:absolute; left:0; top:0; bottom:0;
-    width:var(--progress, 55%);
-    background:var(--accent);
-  }
-
-  @media (max-width:780px){
-  }
-
-  /* ── Footer ── */
-  footer{
-    border-top:1px solid var(--line);
-    padding:26px var(--gutter) 44px;
-    display:flex; flex-wrap:wrap; gap:14px;
-    justify-content:space-between; align-items:center;
-    font-family:var(--mono); font-size:12px; letter-spacing:.04em;
-    color:var(--ink-soft); text-transform:uppercase;
-  }
-  footer .socials a{ margin-left:18px; color:var(--ink); }
-  footer .socials a:hover{ color:var(--accent); }
-
-  /* ── Lightbox ── */
-  .lightbox{
-    position:fixed; inset:0; z-index:60;
-    background:var(--lb-bg);
     display:flex; align-items:center; justify-content:center;
-    opacity:0; visibility:hidden;
-    transition:opacity .35s ease;
   }
-  .lightbox.open{ opacity:1; visibility:visible; }
+  .badge-1978{ position:relative; z-index:2; opacity:0.92; }
+  .about-text p{
+    color: var(--ink);
+    font-size:1.05rem;
+    margin-bottom:18px;
+  }
+  .about-text .signoff{
+    font-family: var(--display);
+    font-style:italic;
+    color: var(--sea);
+    margin-top:24px;
+    font-size:1.1rem;
+  }
 
-  .lightbox .box{
-    width:min(65vw,570px); max-height:82vh; aspect-ratio:4/5; position:relative;
-  }
-  .lightbox .ph{
-    position:absolute; inset:0;
-    transition:opacity .25s ease;
-  }
-  .lightbox .ph.swap{ opacity:0; }
+  /* ---------- menu ---------- */
+  .menu{ background: var(--cork); color: var(--parchment); }
+  .menu .section-head h2{ color: var(--parchment); }
+  .menu .section-head .eyebrow{ color: var(--wheat); }
 
-  .lightbox .info{
-    position:absolute; left:0; bottom:-44px;
-    font-family:var(--mono); font-size:12px; letter-spacing:.04em;
-    text-transform:uppercase; color:#fff;
+  .category-tabs{
+    display:flex; justify-content:center; gap:10px; flex-wrap:wrap;
+    margin-bottom: 50px;
   }
-  .lightbox .counter{
-    position:absolute; top:-44px; left:0;
-    font-family:var(--mono); font-size:12px; letter-spacing:.08em;
-    color:rgba(255,255,255,0.6);
+  .category-tabs button{
+    background:transparent;
+    border:1px solid rgba(242,232,213,0.35);
+    color: rgba(242,232,213,0.75);
+    padding: 9px 20px;
+    border-radius: 3px;
+    font-family: var(--mono);
+    font-size:0.82rem;
+    letter-spacing:0.04em;
+    cursor:pointer;
+    transition: all .2s ease;
   }
-  .lightbox .close{
-    position:absolute; top:-44px; right:0;
-    background:none; border:none; color:#fff;
-    font-family:var(--mono); font-size:12px; letter-spacing:.05em;
-    text-transform:uppercase; cursor:pointer;
+  .category-tabs button.active,
+  .category-tabs button:hover{
+    border-color: var(--wheat);
+    color: var(--wheat);
   }
-  .lightbox .arrow{
-    position:absolute; top:50%; transform:translateY(-50%);
-    background:none; border:none; color:#fff;
-    font-family:var(--mono); font-size:20px;
-    cursor:pointer; padding:18px 14px;
-    opacity:.65; transition:opacity .2s ease;
-    user-select:none;
-  }
-  .lightbox .arrow:hover{ opacity:1; }
-  .lightbox .arrow.prev{ left:calc(-1 * clamp(44px, 8vw, 90px)); }
-  .lightbox .arrow.next{ right:calc(-1 * clamp(44px, 8vw, 90px)); }
-  .lightbox .close:focus-visible,
-  .lightbox .arrow:focus-visible{ outline:1px solid #fff; outline-offset:3px; }
 
-  /* ── Custom cursor (mouse devices only) ── */
-  @media (pointer:fine){
-    body, a, button, .item, .album,
-    .theme-toggle, .lightbox .close, .lightbox .arrow{ cursor:none; }
+  .menu-list{ max-width: 760px; margin: 0 auto; }
+  .menu-category{ display:none; }
+  .menu-category.active{ display:block; }
 
-    .cursor-dot{
-      position:fixed; top:0; left:0;
-      pointer-events:none; z-index:200;
-      mix-blend-mode:difference; /* visible on any background, both themes */
-      opacity:0;
+  .menu-item{
+    display:flex; justify-content:space-between; align-items:baseline;
+    gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px dashed rgba(242,232,213,0.25);
+  }
+  .menu-item:last-child{ border-bottom:none; }
+  .item-name{
+    font-family: var(--display);
+    font-size:1.25rem;
+    font-weight:600;
+    color: var(--parchment);
+  }
+  .item-desc{
+    font-size:0.9rem;
+    color: rgba(242,232,213,0.65);
+    margin-top:4px;
+    max-width: 480px;
+  }
+  .item-price{
+    font-family: var(--mono);
+    font-size:1rem;
+    color: var(--wheat);
+    white-space:nowrap;
+  }
+
+  /* ---------- location ---------- */
+  .location{
+    background: linear-gradient(120deg, var(--myrtle), var(--sea));
+    color: var(--parchment);
+    text-align:center;
+  }
+  .location .section-head h2{ color:var(--parchment); }
+  .location .section-head .eyebrow{ color: var(--wheat); }
+  .info-grid{
+    display:flex; justify-content:center; gap:60px; flex-wrap:wrap;
+    font-family: var(--mono); font-size:0.95rem;
+  }
+  .info-grid div strong{
+    display:block; font-family:var(--body); font-weight:700; margin-bottom:6px; font-size:1rem;
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    background: var(--cork);
+    color: rgba(242,232,213,0.6);
+    text-align:center;
+    padding: 40px 6vw;
+    font-size:0.85rem;
+  }
+  footer .stamp-row{ margin-bottom:18px; }
+  footer a{ color: var(--wheat); text-decoration:none; }
+
+  [data-i18n]{ transition: opacity .15s ease; }
+
+  @media (max-width: 780px){
+    nav{ position:fixed; inset:64px 0 0 0; background:var(--parchment); flex-direction:column; justify-content:flex-start; padding-top:40px; gap:28px; transform:translateX(100%); transition:transform .3s ease; }
+    nav.open{ transform:translateX(0); }
+    .menu-toggle{
+      display:block; background:none; border:none; font-size:1.6rem; color:var(--cork); cursor:pointer;
     }
-    body.cursor-active .cursor-dot{ opacity:1; }
-
-    .cursor-dot{
-      width:5px; height:5px;
-      background:#fff; border-radius:50%;
-      margin:-2.5px 0 0 -2.5px;
-    }
-  }
-
-  @media (prefers-reduced-motion:reduce){
-    .moire:hover, .moire:hover::before, .moire:hover::after{ animation:none; }
-    .item{ opacity:1; transform:none; transition:none; }
-    header, .intro{ animation:none; }
-  }
-
-  @media (max-width:780px){
-    .item.p-half, .item.p-center{ grid-column:span 12; }
-    nav ul{ gap:20px; }
-    .lightbox .box{ width:82vw; }
-    .lightbox .arrow.prev{ left:-38px; }
-    .lightbox .arrow.next{ right:-38px; }
+    .about-grid{ grid-template-columns:1fr; }
+    .about-visual{ aspect-ratio:16/9; }
+    .info-grid{ gap:30px; }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <a href="#" class="wordmark"><span class="moire" data-text="GABRIELE COSSU">GABRIELE COSSU</span></a>
-  <nav>
-    <ul>
-      <li><a href="#contact"><span class="moire" data-text="Contact">Contact</span></a></li>
-      <li><button class="theme-toggle" id="themeToggle" aria-label="Switch theme">[ Dark ]</button></li>
-    </ul>
+  <div class="logo">
+    <span class="logo-mark">
+      <svg viewBox="0 0 40 60" width="18" height="30"><path d="M30 4C16 4 8 16 8 30s8 26 22 26" fill="none" stroke="url(#crescentGrad)" stroke-width="5" stroke-linecap="round"/><defs><linearGradient id="crescentGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f2e8d5"/><stop offset="100%" stop-color="#c9622f"/></linearGradient></defs></svg>
+    </span>
+    <span class="logo-text">
+      <span class="logo-name">La Runcina</span>
+      <span class="logo-sub" data-i18n="logo_sub">Ristorante · dal 1978</span>
+    </span>
+  </div>
+
+  <button class="menu-toggle" id="menuToggle">☰</button>
+
+  <nav id="mainNav">
+    <a href="#about" data-i18n="nav_about">La Storia</a>
+    <a href="#menu" data-i18n="nav_menu">Menù</a>
+    <a href="#location" data-i18n="nav_location">Dove Siamo</a>
   </nav>
+
+  <div class="lang-switch" id="langSwitch">
+    <button data-lang="it" class="active">IT</button>
+    <button data-lang="en">EN</button>
+    <button data-lang="de">DE</button>
+  </div>
 </header>
 
-<section class="intro">
-  <p class="intro-text">Photography is a powerful introspective tool; more than once I found myself wondering what brought me there, to picture-frame that moment... Did I perceive its beauty? But what is that, exactly? To answer that question, I'll keep taking photos, exploring beauty as a noetic concept.</p>
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow" data-i18n="hero_eyebrow">Cucina Sarda Tradizionale</div>
+    <h1>La Runcina</h1>
+    <p class="tagline" data-i18n="hero_tagline">Sapori d'entroterra, dal forno a legna alla tavola. Un ristorante che racconta la Sardegna piatto dopo piatto.</p>
+    <a href="#menu" class="hero-cta" data-i18n="hero_cta">Scopri il Menù</a>
+  </div>
 </section>
 
-<main id="work">
-  <section class="grid" id="grid"></section>
-</main>
-
-<section class="next" id="next">
-  <div class="next-row">
-    <p class="next-text">Next up — <span class="moire" data-text="Working Title">Opera Viva</span></p>
-    <span class="next-when">Expected — Aug 2026</span>
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="badge-1978">
+        <svg viewBox="0 0 140 140" width="120" height="120">
+          <circle cx="70" cy="70" r="62" fill="none" stroke="#f2e8d5" stroke-width="1.5" stroke-dasharray="2 5"/>
+          <circle cx="70" cy="70" r="50" fill="none" stroke="#f2e8d5" stroke-width="1.5"/>
+          <text x="70" y="60" text-anchor="middle" fill="#f2e8d5" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2">RISTORANTE</text>
+          <text x="70" y="90" text-anchor="middle" fill="#f2e8d5" font-family="Fraunces, serif" font-style="italic" font-size="24" font-weight="600">1978</text>
+        </svg>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="eyebrow" data-i18n="about_eyebrow" style="color:var(--clay); font-family:var(--mono); letter-spacing:0.2em; font-size:0.75rem; margin-bottom:16px;">La Nostra Storia</div>
+      <p data-i18n="about_p1">Dal 1978, La Runcina porta in tavola la cucina sarda di campagna: pane carasau appena sfornato, malloreddus fatti a mano, porceddu cotto lentamente secondo tradizione.</p>
+      <p data-i18n="about_p2">Siamo immersi nella campagna sarda, lontani dal caos: solo ingredienti genuini, tempi lenti e ricette tramandate in famiglia.</p>
+      <p class="signoff" data-i18n="about_signoff">— La famiglia Runcina, dal 1978</p>
+    </div>
   </div>
-  <div class="next-bar" style="--progress:45%"></div>
 </section>
 
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
-  <div class="box">
-    <span class="counter" id="lbCounter"></span>
-    <button class="close" id="lbClose">Close ✕</button>
-    <button class="arrow prev" id="lbPrev" aria-label="Previous photo">←</button>
-    <button class="arrow next" id="lbNext" aria-label="Next photo">→</button>
-    <div class="ph" id="lbImg"></div>
-    <div class="info" id="lbInfo"></div>
+<section class="menu" id="menu">
+  <div class="section-head">
+    <div class="eyebrow" data-i18n="menu_eyebrow">Il Menù</div>
+    <h2 data-i18n="menu_title">Cosa Serviamo</h2>
   </div>
-</div>
 
-<footer id="contact">
-  <div>&copy;2026 GABRIELE COSSU</div>
-  <div class="socials">
-    <a href="https://www.instagram.com/gabrielewk/" target="_blank"><span class="moire" data-text="Instagram">Instagram</span></a>
+  <div class="category-tabs">
+    <button class="cat-btn active" data-cat="antipasti" data-i18n="cat_antipasti">Antipasti</button>
+    <button class="cat-btn" data-cat="primi" data-i18n="cat_primi">Primi</button>
+    <button class="cat-btn" data-cat="secondi" data-i18n="cat_secondi">Secondi</button>
+    <button class="cat-btn" data-cat="dolci" data-i18n="cat_dolci">Dolci</button>
   </div>
+
+  <div class="menu-list">
+    <div class="menu-category active" data-cat="antipasti">
+      <div class="menu-item">
+        <div>
+          <div class="item-name" data-i18n="item_1_name">Pane Carasau con Olio e Sale</div>
+          <div class="item-desc" data-i18n="item_1_desc">Il tipico "carta da musica" sardo, croccante, con olio EVO locale.</div>
+        </div>
+        <div class="item-price">€6</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="item-name" data-i18n="item_2_name">Tagliere di Salumi e Formaggi</div>
+          <div class="item-desc" data-i18n="item_2_desc">Selezione di salumi sardi e pecorino stagionato con miele di corbezzolo.</div>
+        </div>
+        <div class="item-price">€14</div>
+      </div>
+    </div>
+
+    <div class="menu-category" data-cat="primi">
+      <div class="menu-item">
+        <div>
+          <div class="item-name" data-i18n="item_3_name">Malloreddus alla Campidanese</div>
+          <div class="item-desc" data-i18n="item_3_desc">Gnocchetti sardi con salsiccia, zafferano e pomodoro fresco.</div>
+        </div>
+        <div class="item-price">€12</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="item-name" data-i18n="item_4_name">Culurgiones</div>
+          <div class="item-desc" data-i18n="item_4_desc">Ravioli ripieni di patate, pecorino e menta, conditi con burro e salvia.</div>
+        </div>
+        <div class="item-price">€13</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="item-name" data-i18n="item_9_name">Zuppa di Farro e Funghi Porcini</div>
+          <div class="item-desc" data-i18n="item_9_desc">Farro dell'entroterra, funghi porcini raccolti in autunno e un filo d'olio a crudo.</div>
+        </div>
+        <div class="item-price">€11</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="item-name" data-i18n="item_10_name">Ravioli di Zucca al Pecorino Affumicato</div>
+          <div class="item-desc" data-i18n="item_10_desc">Pasta fresca ripiena di zucca, burro nocciola e scaglie di pecorino affumicato.</div>
+        </div>
+        <div class="item-price">€13</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="item-name" data-i18n="item_11_name">Risotto al Mirto e Bottarga</div>
+          <div class="item-desc" data-i18n="item_11_desc">Risotto mantecato con liquore di mirto sardo e bottarga di muggine grattugiata.</div>
+        </div>
+        <div class="item-price">€14</div>
+      </div>
+    </div>
+
+    <div class="menu-category" data-cat="secondi">
+      <div class="menu-item">
+        <div>
+          <div class="item-name" data-i18n="item_5_name">Porceddu Sardo</div>
+          <div class="item-desc" data-i18n="item_5_desc">Maialino da latte arrosto cotto lentamente secondo la tradizione.</div>
+        </div>
+        <div class="item-price">€22</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="item-name" data-i18n="item_6_name">Fregola con Arselle</div>
+          <div class="item-desc" data-i18n="item_6_desc">Fregola sarda tostata con vongole veraci e prezzemolo.</div>
+        </div>
+        <div class="item-price">€18</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="item-name" data-i18n="item_12_name">Agnello alle Erbe di Macchia</div>
+          <div class="item-desc" data-i18n="item_12_desc">Agnello sardo arrosto con timo selvatico, rosmarino e miele di corbezzolo.</div>
+        </div>
+        <div class="item-price">€20</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="item-name" data-i18n="item_13_name">Cinghiale in Umido al Mirto</div>
+          <div class="item-desc" data-i18n="item_13_desc">Cinghiale brasato lentamente con bacche di mirto, vino rosso e polenta di castagne.</div>
+        </div>
+        <div class="item-price">€21</div>
+      </div>
+    </div>
+
+    <div class="menu-category" data-cat="dolci">
+      <div class="menu-item">
+        <div>
+          <div class="item-name" data-i18n="item_7_name">Seadas</div>
+          <div class="item-desc" data-i18n="item_7_desc">Ravioli fritti ripieni di formaggio fresco, serviti con miele amaro.</div>
+        </div>
+        <div class="item-price">€8</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="item-name" data-i18n="item_8_name">Pardulas</div>
+          <div class="item-desc" data-i18n="item_8_desc">Piccoli dolci di pasta frolla ripieni di ricotta e zafferano.</div>
+        </div>
+        <div class="item-price">€6</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="location" id="location">
+  <div class="section-head">
+    <div class="eyebrow" data-i18n="loc_eyebrow">Vi Aspettiamo</div>
+    <h2 data-i18n="loc_title">Dove Siamo</h2>
+  </div>
+  <div class="info-grid">
+    <div>
+      <strong data-i18n="loc_address_label">Indirizzo</strong>
+      Via Nazionale 12, San Teodoro (SS)
+    </div>
+    <div>
+      <strong data-i18n="loc_hours_label">Orari</strong>
+      <span data-i18n="loc_hours_value">Tutti i giorni, 19:00 – 23:30</span>
+    </div>
+    <div>
+      <strong data-i18n="loc_phone_label">Telefono</strong>
+      +39 0784 000 000
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="stamp-row">
+    <span class="stamp"><svg viewBox="0 0 40 40"><g fill="none" stroke="#d9a441" stroke-width="2"><circle cx="20" cy="20" r="14"/><path d="M20 8v4M20 28v4M8 20h4M28 20h4"/></g></svg></span>
+    <span class="stamp"><svg viewBox="0 0 40 40"><g fill="none" stroke="#d9a441" stroke-width="2"><rect x="10" y="10" width="20" height="20" transform="rotate(45 20 20)"/></g></svg></span>
+    <span class="stamp"><svg viewBox="0 0 40 40"><g fill="none" stroke="#d9a441" stroke-width="2"><circle cx="20" cy="20" r="14"/><path d="M20 8v4M20 28v4M8 20h4M28 20h4"/></g></svg></span>
+  </div>
+  <p>La Runcina · San Teodoro, Sardegna · <a href="#" data-i18n="footer_ig">Seguici su Instagram</a></p>
+  <p style="margin-top:8px; opacity:0.6;">&copy; 2026 La Runcina</p>
 </footer>
 
 <script>
-/* ══════════ THEME TOGGLE ══════════ */
-const toggle = document.getElementById('themeToggle');
-
-function applyTheme(t){
-  document.documentElement.setAttribute('data-theme', t);
-  toggle.textContent = t === 'dark' ? '[ Light ]' : '[ Dark ]';
-  try{ localStorage.setItem('gc-theme', t); }catch(e){ /* preview environments may block storage */ }
-}
-
-let saved = null;
-try{ saved = localStorage.getItem('gc-theme'); }catch(e){}
-applyTheme(saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
-
-toggle.addEventListener('click', () => {
-  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-  applyTheme(next);
-});
-
-/* ══════════ PROJECTS ══════════ */
-const projects = [
-  { title:"Granite Coastline",  cat:"Landscape", loc:"San Teodoro",       year:"2026", span:"p-center",
-    photos:[
-      "linear-gradient(135deg,#3c4a4f,#7c8b86)",
-      "linear-gradient(135deg,#2f3a3d,#5f6d68)",
-      "linear-gradient(140deg,#4a5a5e,#9fb3b8)",
-      "linear-gradient(130deg,#1e2426,#3c4a4f)",
-    ] },
-  { title:"Quiet Portrait",     cat:"Portrait",  loc:"Olbia",             year:"2026", span:"p-half",
-    photos:[
-      "linear-gradient(135deg,#8a6a4f,#cdb48f)",
-      "linear-gradient(140deg,#6b4f38,#a8815a)",
-      "linear-gradient(130deg,#cdb48f,#e8dcc4)",
-    ] },
-  { title:"Market Morning",     cat:"Street",    loc:"Cagliari",          year:"2025", span:"p-half",
-    photos:[
-      "linear-gradient(135deg,#6b5b4f,#b8881f)",
-      "linear-gradient(140deg,#4a3f36,#8a6f2f)",
-      "linear-gradient(130deg,#b8881f,#e0c164)",
-      "linear-gradient(125deg,#2e2823,#6b5b4f)",
-      "linear-gradient(135deg,#8a6f2f,#c9a44a)",
-    ] },
-];
-
-const grid = document.getElementById('grid');
-projects.forEach((p, i) => {
-  const el = document.createElement('div');
-  el.className = `item ${p.span}`;
-  el.style.setProperty('--d', `${(i % 2) * 0.12}s`); /* stagger pairs */
-  el.innerHTML = `
-    <div class="photo">
-      <div class="ph" style="background:${p.photos[0]}"></div>
-      <span class="photo-count">${String(p.photos.length).padStart(2,'0')} photos</span>
-      <span class="placeholder-flag">placeholder</span>
-    </div>
-    <div class="cap">
-      <div class="title"><span class="moire" data-text="${p.title}">${p.title}</span></div>
-      <div class="meta">${p.cat} / ${p.loc} / ${p.year}</div>
-    </div>
-  `;
-  el.addEventListener('click', () => {
-    const albumSet = p.photos.map(grad => ({ grad, title:p.title, cat:p.cat, loc:p.loc, year:p.year }));
-    openLightbox(albumSet, 0);
-  });
-  grid.appendChild(el);
-});
-
-/* ══════════ SCROLL REVEAL ══════════ */
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if(e.isIntersecting){
-      e.target.classList.add('in');
-      io.unobserve(e.target);
+  // ---- i18n dictionary ----
+  const i18n = {
+    it: {
+      nav_about:"La Storia", nav_menu:"Menù", nav_location:"Dove Siamo",
+      hero_eyebrow:"Cucina Sarda Tradizionale",
+      hero_tagline:"Sapori d'entroterra, dal forno a legna alla tavola. Un ristorante che racconta la Sardegna piatto dopo piatto.",
+      hero_cta:"Scopri il Menù",
+      about_eyebrow:"La Nostra Storia",
+      about_p1:"La Runcina nasce dalla passione per la cucina sarda autentica: pane carasau appena sfornato, malloreddus fatti a mano, porceddu cotto lentamente secondo tradizione.",
+      about_p2:"Ogni piatto arriva dalle colline dell'entroterra fino alla vostra tavola, con ingredienti scelti da piccoli produttori locali.",
+      about_signoff:"— La famiglia Runcina",
+      menu_eyebrow:"Il Menù", menu_title:"Cosa Serviamo",
+      logo_sub:"Ristorante · dal 1978",
+      cat_antipasti:"Antipasti", cat_primi:"Primi", cat_secondi:"Secondi", cat_dolci:"Dolci",
+      item_1_name:"Pane Carasau con Olio e Sale", item_1_desc:"Il tipico \"carta da musica\" sardo, croccante, con olio EVO locale.",
+      item_2_name:"Tagliere di Salumi e Formaggi", item_2_desc:"Selezione di salumi sardi e pecorino stagionato con miele di corbezzolo.",
+      item_3_name:"Malloreddus alla Campidanese", item_3_desc:"Gnocchetti sardi con salsiccia, zafferano e pomodoro fresco.",
+      item_4_name:"Culurgiones", item_4_desc:"Ravioli ripieni di patate, pecorino e menta, conditi con burro e salvia.",
+      item_5_name:"Porceddu Sardo", item_5_desc:"Maialino da latte arrosto cotto lentamente secondo la tradizione.",
+      item_6_name:"Fregola con Arselle", item_6_desc:"Fregola sarda tostata con vongole veraci e prezzemolo.",
+      item_9_name:"Zuppa di Farro e Funghi Porcini", item_9_desc:"Farro dell'entroterra, funghi porcini raccolti in autunno e un filo d'olio a crudo.",
+      item_10_name:"Ravioli di Zucca al Pecorino Affumicato", item_10_desc:"Pasta fresca ripiena di zucca, burro nocciola e scaglie di pecorino affumicato.",
+      item_11_name:"Risotto al Mirto e Bottarga", item_11_desc:"Risotto mantecato con liquore di mirto sardo e bottarga di muggine grattugiata.",
+      item_12_name:"Agnello alle Erbe di Macchia", item_12_desc:"Agnello sardo arrosto con timo selvatico, rosmarino e miele di corbezzolo.",
+      item_13_name:"Cinghiale in Umido al Mirto", item_13_desc:"Cinghiale brasato lentamente con bacche di mirto, vino rosso e polenta di castagne.",
+      item_7_name:"Seadas", item_7_desc:"Ravioli fritti ripieni di formaggio fresco, serviti con miele amaro.",
+      item_8_name:"Pardulas", item_8_desc:"Piccoli dolci di pasta frolla ripieni di ricotta e zafferano.",
+      loc_eyebrow:"Vi Aspettiamo", loc_title:"Dove Siamo",
+      loc_address_label:"Indirizzo", loc_hours_label:"Orari", loc_hours_value:"Tutti i giorni, 19:00 – 23:30", loc_phone_label:"Telefono",
+      footer_ig:"Seguici su Instagram"
+    },
+    en: {
+      nav_about:"Our Story", nav_menu:"Menu", nav_location:"Find Us",
+      hero_eyebrow:"Traditional Sardinian Cuisine",
+      hero_tagline:"Flavors of the hinterland, from the wood-fired oven to your table. A restaurant that tells the story of Sardinia, one dish at a time.",
+      hero_cta:"See the Menu",
+      about_eyebrow:"Our Story",
+      about_p1:"Since 1978, La Runcina has brought Sardinian country cooking to the table: freshly baked pane carasau, hand-made malloreddus, porceddu slow-roasted the traditional way.",
+      about_p2:"We're set in the Sardinian countryside, far from the rush: genuine ingredients, slow pace, and recipes passed down through the family.",
+      about_signoff:"— The Runcina family, since 1978",
+      menu_eyebrow:"The Menu", menu_title:"What We Serve",
+      logo_sub:"Ristorante · since 1978",
+      cat_antipasti:"Starters", cat_primi:"First Courses", cat_secondi:"Main Courses", cat_dolci:"Desserts",
+      item_1_name:"Pane Carasau with Oil & Salt", item_1_desc:"Sardinia's crisp \"music paper\" bread, with local extra virgin olive oil.",
+      item_2_name:"Cured Meats & Cheese Board", item_2_desc:"Selection of Sardinian cured meats and aged pecorino with strawberry-tree honey.",
+      item_3_name:"Malloreddus alla Campidanese", item_3_desc:"Sardinian gnocchi with sausage, saffron and fresh tomato.",
+      item_4_name:"Culurgiones", item_4_desc:"Dumplings filled with potato, pecorino and mint, tossed in butter and sage.",
+      item_5_name:"Roast Suckling Pig (Porceddu)", item_5_desc:"Slow-roasted suckling pig, cooked the traditional way.",
+      item_6_name:"Fregola with Clams", item_6_desc:"Toasted Sardinian fregola with clams and parsley.",
+      item_9_name:"Farro & Porcini Mushroom Soup", item_9_desc:"Inland farro, autumn-picked porcini mushrooms and a drizzle of raw olive oil.",
+      item_10_name:"Pumpkin Ravioli with Smoked Pecorino", item_10_desc:"Fresh pasta filled with pumpkin, brown butter and shaved smoked pecorino.",
+      item_11_name:"Myrtle & Bottarga Risotto", item_11_desc:"Creamy risotto with Sardinian myrtle liqueur and grated mullet bottarga.",
+      item_12_name:"Lamb with Wild Maquis Herbs", item_12_desc:"Roast Sardinian lamb with wild thyme, rosemary and strawberry-tree honey.",
+      item_13_name:"Wild Boar Stew with Myrtle", item_13_desc:"Slow-braised wild boar with myrtle berries, red wine and chestnut polenta.",
+      item_7_name:"Seadas", item_7_desc:"Fried pastries filled with fresh cheese, served with bitter honey.",
+      item_8_name:"Pardulas", item_8_desc:"Small shortcrust pastries filled with ricotta and saffron.",
+      loc_eyebrow:"We're Waiting For You", loc_title:"Find Us",
+      loc_address_label:"Address", loc_hours_label:"Hours", loc_hours_value:"Every day, 7:00 PM – 11:30 PM", loc_phone_label:"Phone",
+      footer_ig:"Follow us on Instagram"
+    },
+    de: {
+      nav_about:"Unsere Geschichte", nav_menu:"Speisekarte", nav_location:"So Finden Sie Uns",
+      hero_eyebrow:"Traditionelle Sardische Küche",
+      hero_tagline:"Aromen aus dem Landesinneren, vom Holzofen auf den Tisch. Ein Restaurant, das Sardinien Gericht für Gericht erzählt.",
+      hero_cta:"Speisekarte Entdecken",
+      about_eyebrow:"Unsere Geschichte",
+      about_p1:"Seit 1978 bringt La Runcina die sardische Landküche auf den Tisch: frisch gebackenes Pane Carasau, handgemachte Malloreddus, traditionell langsam geschmorter Porceddu.",
+      about_p2:"Wir liegen mitten in der sardischen Landschaft, fernab der Hektik: nur echte Zutaten, Ruhe und Familienrezepte.",
+      about_signoff:"— Die Familie Runcina, seit 1978",
+      menu_eyebrow:"Die Speisekarte", menu_title:"Unser Angebot",
+      logo_sub:"Ristorante · seit 1978",
+      cat_antipasti:"Vorspeisen", cat_primi:"Erste Gänge", cat_secondi:"Hauptgänge", cat_dolci:"Desserts",
+      item_1_name:"Pane Carasau mit Öl und Salz", item_1_desc:"Das knusprige sardische \"Musikpapier\"-Brot mit lokalem Olivenöl.",
+      item_2_name:"Wurst- und Käseplatte", item_2_desc:"Auswahl sardischer Wurstwaren und gereiften Pecorinos mit Erdbeerbaum-Honig.",
+      item_3_name:"Malloreddus alla Campidanese", item_3_desc:"Sardische Gnocchi mit Wurst, Safran und frischer Tomate.",
+      item_4_name:"Culurgiones", item_4_desc:"Teigtaschen gefüllt mit Kartoffeln, Pecorino und Minze, in Butter und Salbei geschwenkt.",
+      item_5_name:"Sardisches Spanferkel (Porceddu)", item_5_desc:"Langsam gebratenes Spanferkel nach traditioneller Art.",
+      item_6_name:"Fregola mit Venusmuscheln", item_6_desc:"Geröstete sardische Fregola mit Venusmuscheln und Petersilie.",
+      item_9_name:"Dinkel-Steinpilz-Suppe", item_9_desc:"Dinkel aus dem Hinterland, im Herbst gesammelte Steinpilze und ein Schuss natives Olivenöl.",
+      item_10_name:"Kürbisravioli mit geräuchertem Pecorino", item_10_desc:"Frische Pasta gefüllt mit Kürbis, brauner Butter und geräuchertem Pecorino.",
+      item_11_name:"Risotto mit Myrte und Bottarga", item_11_desc:"Cremiges Risotto mit sardischem Myrtenlikör und geriebener Meeräschen-Bottarga.",
+      item_12_name:"Lamm mit Wildkräutern der Macchia", item_12_desc:"Gebratenes sardisches Lamm mit wildem Thymian, Rosmarin und Erdbeerbaum-Honig.",
+      item_13_name:"Wildschwein-Ragout mit Myrte", item_13_desc:"Langsam geschmortes Wildschwein mit Myrtenbeeren, Rotwein und Kastanienpolenta.",
+      item_7_name:"Seadas", item_7_desc:"Frittierte Teigtaschen mit frischem Käse, serviert mit bitterem Honig.",
+      item_8_name:"Pardulas", item_8_desc:"Kleines Mürbeteiggebäck gefüllt mit Ricotta und Safran.",
+      loc_eyebrow:"Wir Freuen Uns Auf Sie", loc_title:"So Finden Sie Uns",
+      loc_address_label:"Adresse", loc_hours_label:"Öffnungszeiten", loc_hours_value:"Täglich, 19:00 – 23:30 Uhr", loc_phone_label:"Telefon",
+      footer_ig:"Folgen Sie uns auf Instagram"
     }
-  });
-}, { threshold: 0.12 });
-document.querySelectorAll('.grid .item').forEach(el => io.observe(el));
+  };
 
-/* ══════════ LIGHTBOX with prev/next + keyboard ══════════ */
-const lightbox = document.getElementById('lightbox');
-const lbImg = document.getElementById('lbImg');
-const lbInfo = document.getElementById('lbInfo');
-const lbCounter = document.getElementById('lbCounter');
-let activeSet = projects;
-let current = 0;
-
-function renderLightbox(){
-  const p = activeSet[current];
-  lbImg.classList.add('swap');
-  setTimeout(() => {
-    lbImg.style.background = p.grad;
-    lbInfo.textContent = `${p.title} — ${p.cat} / ${p.loc} / ${p.year}`;
-    lbCounter.textContent = `${String(current+1).padStart(2,'0')} / ${String(activeSet.length).padStart(2,'0')}`;
-    lbImg.classList.remove('swap');
-  }, 130);
-}
-
-function openLightbox(set, i){
-  activeSet = set;
-  current = i;
-  const p = activeSet[current];
-  lbImg.style.background = p.grad;
-  lbInfo.textContent = `${p.title} — ${p.cat} / ${p.loc} / ${p.year}`;
-  lbCounter.textContent = `${String(current+1).padStart(2,'0')} / ${String(activeSet.length).padStart(2,'0')}`;
-  lightbox.classList.add('open');
-}
-function closeLightbox(){ lightbox.classList.remove('open'); }
-function step(dir){
-  current = (current + dir + activeSet.length) % activeSet.length;
-  renderLightbox();
-}
-
-document.getElementById('lbClose').addEventListener('click', closeLightbox);
-document.getElementById('lbPrev').addEventListener('click', e => { e.stopPropagation(); step(-1); });
-document.getElementById('lbNext').addEventListener('click', e => { e.stopPropagation(); step(1); });
-lightbox.addEventListener('click', e => { if(e.target === lightbox) closeLightbox(); });
-
-document.addEventListener('keydown', e => {
-  if(!lightbox.classList.contains('open')) return;
-  if(e.key === 'Escape') closeLightbox();
-  if(e.key === 'ArrowLeft') step(-1);
-  if(e.key === 'ArrowRight') step(1);
-});
-
-/* ══════════ CUSTOM VIEWFINDER CURSOR ══════════ */
-if (window.matchMedia('(pointer:fine)').matches) {
-  const dot = document.createElement('div');
-  dot.className = 'cursor-dot';
-  document.body.append(dot);
-
-  document.addEventListener('mousemove', e => {
-    dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-    document.body.classList.add('cursor-active');
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(i18n[lang][key]) el.textContent = i18n[lang][key];
+    });
+    document.querySelectorAll('#langSwitch button').forEach(b=>{
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+  }
+  document.querySelectorAll('#langSwitch button').forEach(btn=>{
+    btn.addEventListener('click', ()=> setLang(btn.dataset.lang));
   });
 
-  document.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
-  document.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
-}
+  // ---- menu category tabs ----
+  document.querySelectorAll('.cat-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.menu-category').forEach(c=>c.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelector(`.menu-category[data-cat="${btn.dataset.cat}"]`).classList.add('active');
+    });
+  });
+
+  // ---- mobile nav ----
+  document.getElementById('menuToggle').addEventListener('click', ()=>{
+    document.getElementById('mainNav').classList.toggle('open');
+  });
+  document.querySelectorAll('#mainNav a').forEach(a=>{
+    a.addEventListener('click', ()=> document.getElementById('mainNav').classList.remove('open'));
+  });
 </script>
 
 </body>

@@ -22,7 +22,7 @@
     --mono: 'IBM Plex Mono', monospace;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; overflow-x:hidden;}
   body{
     font-family: var(--body);
     background: var(--parchment);
@@ -334,8 +334,7 @@
       -webkit-overflow-scrolling:touch;
       gap: clamp(5px, 2vw, 8px);
       padding-bottom:4px;
-      margin-left:-6vw; margin-right:-6vw;
-      padding-left:6vw; padding-right:6vw;
+      max-width:100%;
     }
     .category-tabs button{
       padding: 7px clamp(8px, 2.5vw, 14px);
